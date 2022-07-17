@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello employé!{% endblock %}
+
+{% block body %}
+
+     <h1 class="text-center mb-4" >Detail de l'employé(e)</h1>
+     <h2 class="text-center" >{{employe}}</h2>
+     <div class="container d-flex justify-content-center">
+        <div class="row row-col-6" >
+            <div class="card mt-5" style="width: 18rem;">
+                <div class="card-header text-center ">
+                  <strong>  {{employe | upper }} </strong>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Située a <strong> {{employe.ville}} </strong></li>
+                    <li class="list-group-item">Née le {{employe.dateNaissance | date("m/d/Y") }} <strong> {{ employe.age }} ans </strong></li>
+                    <li class="list-group-item">Embauché(e) le {{employe.dateEmbauche | date("m/d/Y") }} <strong> {{ employe.anciennete }} ans d'ancienneté </strong></li>
+                    <li class="list-group-item">Dans l'entreprise : <strong>{{employe.entreprise.raisonSocial }}</strong></li>
+                    <button class="btn bg-secondary fs-4"><a href="{{ path('show_entreprise',{'id': employe.entreprise.id }) }}">Détail entreprise</a></button>
+                </ul>
+            </div>
+        </div>
+    </div>    
+        
+    
+
+{% endblock %}

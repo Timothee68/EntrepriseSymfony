@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EntrepriseController!{% endblock %}
+
+{% block body %}
+     <h1 class="text-center mb-4" >Detail de l'entreprise </h1>
+     <h2 class="text-center" >{{entreprise.raisonSocial}}</h2>
+     <div class="container d-flex justify-content-center">
+        <div class="card mt-5" style="width: 18rem;">
+            <div class="card-header">
+                {{entreprise.raisonSocial}}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Située au <strong> {{entreprise.fullAdresse}} </strong></li>
+                <li class="list-group-item">Crée le <strong>{{entreprise.dateCreation | date("d/m/Y") }} <br> depuis {{ entreprise.creation }} ans</strong></li>
+                <li class="list-group-item">N°SIRET <strong>{{entreprise.siret }}</strong></li>
+            </ul>
+        </div>
+    </div>    
+
+    <h2 class="text-center mt-5 mb-5">Liste des employé(s)</h2>
+    {# si dans la collection de entreprise est = a 0 alors  h3 sinon on affiche la liste  #}
+    {% if entreprise.employes | length == 0 %}
+        <h3 class="text-center">Aucun employé(e) dans l'entreprise à ce jour 
+        {% else %}
+            {% for employe in entreprise.employes %}
+                <div class="container d-flex justify-content-center">
+                    <div class="row row-col-1">
+                        <div class="card mt-5" style="width: 18rem;">
+                        <div class="card-header text-center ">
+                        <strong>  {{employe | upper }} </strong>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Embauché(e) le  {{employe.dateEmbauche | date("d/m/Y") }}<br> <strong> {{ employe.anciennete }} ans d'ancienneté </strong></li>
+                            <li class="list-group-item"><a href="{{ path('show_employe',{'id': employe.id }) }}">Détail employé(e)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+    {% endif %}
+{% endblock %}

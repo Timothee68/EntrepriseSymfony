@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une entrprise{% endblock %}
+
+{% block body %}
+{# si on recupere edit  #}
+     {% if edit %}
+          <h1 class="text-center mt-4 mb-4" >Editer une entreprise</h1>
+     {% else %}
+          <h1 class="text-center mt-4 mb-4" >Ajouter une entreprise</h1>     
+     {% endif %}
+     
+
+          {# form fonction de twig pour afficher un fromulaire avec le nom qu'on a donnée dans le controller Entreprise #}
+     {# {{ form(formAddEntreprise) }} #}
+     {{ form_start(formAddEntreprise) }}
+          {{ form_errors(formAddEntreprise) }}
+               <div class="container">
+                    <div class="row">
+                         <div class="col-4 mb-4 mt-4">
+                              {{ form_row(formAddEntreprise.raisonSocial) }}
+                         </div>
+                         <div class="col-4 mb-4 mt-4">
+                              {{ form_row(formAddEntreprise.ville) }}
+                         </div>
+                         <div class="col-4 mb-4 mt-4">   
+                              {{ form_row(formAddEntreprise.cp) }}
+                         </div>
+                         <div class="col-8  mb-4">   
+                              {{ form_row(formAddEntreprise.adresse) }}
+                         </div>
+                         <div class="col-4">   
+                              {{ form_row(formAddEntreprise.dateCreation) }}
+                         </div>
+                         <div class="col-4">        
+                              {{ form_row(formAddEntreprise.siret) }}
+                         </div>
+                         <div class="row">
+                         <div class="col-4 mt-4">   
+                              {{ form_row(formAddEntreprise.submit, { 'label': 'Submit me' }) }}
+                         </div>
+                         </div>     
+                    </div>   
+               </div> 
+     {{ form_end(formAddEntreprise) }}
+
+{% endblock %}
+
+
+
+
+
+
+

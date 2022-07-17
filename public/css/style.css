@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+a:hover{
+    color :blue !important;
+    font-size: large;
+}
+
+i{
+    font-size:x-large !important;
+}
+
+.fa-trash{
+    color: rgb(134, 30, 30) !important;
+   
+}
+.fa-trash:hover{
+    color: rgb(255, 0, 0) !important;
+   
+}

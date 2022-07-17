@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprises!{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-4 mb-5">Liste des entreprises</h1>
+
+
+    <div class="container">
+        <button class="btn bg-secondary"><a href="{{ path('add_entreprise') }}">Ajouter une entreprise</a></button>
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Entreprises</th>
+                    <th scope="col">Editer</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entreprise in entreprises %}
+                <tr>
+                    <th><a href="{{ path('show_entreprise', {'id': entreprise.id }) }}">{{ entreprise }}</a></th> 
+                    <th><a href="{{ path('edit_entreprise', {'id': entreprise.id }) }}"><i class="fa-solid fa-pen-nib"></i></a></th> 
+                    <th><a href="{{ path('delete_entreprise', {'id': entreprise.id }) }}"><i class="fa-solid fa-trash"></i></a></th> 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+
+{% endblock %}
